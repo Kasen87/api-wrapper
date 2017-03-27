@@ -39,3 +39,7 @@ jspm_packages
 # Sublime Work Files
 *.sublime-project
 *.sublime-workspace
+
+
+# Old Project Files (for reference only)
+LeapfrogOnlineChallenge
