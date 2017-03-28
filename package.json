@@ -1,0 +1,19 @@
+{
+  "name": "api-wrapper",
+  "version": "0.5.0",
+  "description": "\u0016Code written for a challenge that was rejected.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kasen87/api-wrapper.git"
+  },
+  "author": "Joshua R. Engel <joshua-nodejs@68studios.io> (http://www.linkedin.com/in/joshuarengel)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kasen87/api-wrapper/issues"
+  },
+  "homepage": "https://github.com/Kasen87/api-wrapper#readme"
+}
