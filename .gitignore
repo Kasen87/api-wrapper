@@ -35,3 +35,12 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Workspace Specific Files, Directories, & Settings
+#
+# General Directory
+_workspace-specific
+
+# Sublime Work Files
+*.sublime-project
+*.sublime-workspace
