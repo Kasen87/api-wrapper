@@ -1,10 +1,10 @@
 {
   "name": "api-wrapper",
-  "version": "0.5.0",
-  "description": "\u0016Code written for a challenge that was rejected.",
+  "version": "1.0.0",
+  "description": "\u0016Code that was written for an library challenge but rejected and has been updated to fix the errors/suggestions from their feedback.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Kasen87/api-wrapper/issues"
   },
-  "homepage": "https://github.com/Kasen87/api-wrapper#readme"
+  "homepage": "https://github.com/Kasen87/api-wrapper#readme",
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "jasmine-node": "^1.14.5",
+    "nock": "^9.0.11"
+  }
 }

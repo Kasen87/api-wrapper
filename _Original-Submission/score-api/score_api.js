@@ -3,10 +3,12 @@ const RequestHandler = require ('../lib_score-api/request_handler');
 
 class ScoreAPI { 
   constructor(baseURL, path) {
-    this._baseURL = "http://www.example.com"
+    this._baseURL = "http:/ xwww.example.com"
     this._path = "/customer_scoring?"
   }
 
+
+  //Should
   rankCustomer(income, zipcode, age) {
     if (!income || !zipcode || !age) { 
       throw new Error(`Missing Data at rankCustomer()\n- Income: ${income} - Zipcode: ${zipcode} - Age: ${age}`)
@@ -41,20 +43,7 @@ class ScoreAPI {
     let _endpoint = [this._baseURL + this._path]
 
     for (let _key in data) {
-      switch (_key) {
-        case 'income':
-          _endpoint[1] = 'income=' + data[_key]; 
-          break;
-        case 'zipcode': 
-          _endpoint[2] = '&zipcode=' + data[_key];
-          break;
-        case 'age':
-          _endpoint[3] = '&age=' + data[_key];
-          break;
-        default:
-          console.log(_key, data[_key])
-          break;
-       } 
+          _endpoint[1] += '=' + data[_key]; 
     }
 
     return _endpoint.join('')
