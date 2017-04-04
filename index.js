@@ -18,9 +18,6 @@ _fs.readdir('./', (err, files) => {
     b = resolvedPath;
     console.log("index.js file resolved to path of: ", resolvedPath);
     //console.log(b == process.cwd()+'\\index.js' ? true : false);
-  })
+  });
 
-})
-
-
-
+});
