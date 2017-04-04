@@ -2,7 +2,7 @@
   "name": "api-wrapper",
   "version": "1.0.0",
   "description": "Code that was written for an library challenge but rejected and has been updated to fix the errors/suggestions from their feedback.",
-  "main": "./index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jasmine"
   },
