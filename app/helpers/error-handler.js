@@ -1,15 +1,15 @@
 /**
- * Class: RequestHandler
+ * Class: ErrorHandler
  */
-class RequestHandler{
+class ErrorHandler{
   constructor(props){
     if(!props){ throw new Error("No props supplied."); }
     this.props = props;
   }
 
   sayHello(){
-    console.log('Hello from Request-Handler!');
+    console.log('Hello from Error-Handler!');
   }
 }
 
-module.exports = RequestHandler;
+module.exports = ErrorHandler;

@@ -1,7 +1,14 @@
 // main.js
 const _QB = require('./helpers/query-builder.js');
+const _RH = require('./helpers/request-handler.js');
+const _EH = require('./helpers/error-handler.js');
+const _RV = require('./helpers/response-validator.js');
+const _IV = require('./helpers/input-validator.js');
 
-let qb = new _QB();
+class ApiWrapper {
+  constructor(props){
+    this.props = props;
+  }
+}
 
-console.log("Did it say hello, yet?");
-qb.sayHello();
+module.exports = ApiWrapper;

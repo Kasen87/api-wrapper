@@ -3,7 +3,8 @@
  */
 class QueryBuilder{
   constructor(props){
-
+    if(!props){ throw new Error("No props supplied."); }
+    this.props = props;
   }
 
   sayHello(){
