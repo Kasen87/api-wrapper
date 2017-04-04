@@ -1,5 +1,5 @@
 # API Wrapper Challenge
-Code written for a challenge that was rejected. 
+Code written for a challenge that was rejected.
 
 __Important Links__
 - [Original Submission's README.md](https://github.com/Kasen87/api-wrapper/blob/develop/Original-Submission/README.md)
@@ -8,9 +8,9 @@ __Important Links__
 - [Researched/Learned for this challenge](https://github.com/Kasen87/api-wrapper/blob/develop/_project-documentation/RESEARCH.md)
 
 ## Challenge Description
-We'd like you to write a library integrating with a hypothetical API. Depending on your experience, this project can take as little as 30 minutes but should take no more than a few hours to complete. 
+We'd like you to write a library integrating with a hypothetical API. Depending on your experience, this project can take as little as 30 minutes but should take no more than a few hours to complete.
 
-The API is a single endpoint, providing scoring advice about consumers based on their income, zip code, and age.  
+The API is a single endpoint, providing scoring advice about consumers based on their income, zip code, and age.
 
 The hypothetical API is accessible via a standard HTTP GET request. For example:
 
@@ -20,7 +20,7 @@ A successful request to the API will return a JSON response resembling the follo
 
 ```{ "propensity": 0.26532, "ranking": "C" }```
 
-Your library should gracefully handle some common errors that you think might occur during its usage.  
+Your library should gracefully handle some common errors that you think might occur during its usage.
 
 ## Submission Requirements
 Please provide the following to allow us to evaluate your work:
