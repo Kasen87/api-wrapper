@@ -1,0 +1,9 @@
+# Ignoring Ref Files
+_ref-files/_Original-Submission
+_ref-files/_workspace-specific
+
+# Sublime Text 3 Setup files
+.jshintrc
+*.sublime-workspace
+*.sublime-project
+./example.json

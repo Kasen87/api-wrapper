@@ -1,8 +1,8 @@
 {
   "name": "api-wrapper",
   "version": "1.0.0",
-  "description": "\u0016Code that was written for an library challenge but rejected and has been updated to fix the errors/suggestions from their feedback.",
-  "main": "index.js",
+  "description": "Code that was written for an library challenge but rejected and has been updated to fix the errors/suggestions from their feedback.",
+  "main": "./index.js",
   "scripts": {
     "test": "jasmine"
   },
@@ -14,6 +14,11 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Kasen87/api-wrapper/issues"
+  },
+  "directories": {
+    "lib": "./app",
+    "test": "./spec",
+    "doc": "./_ref-files/_project-documentation"
   },
   "homepage": "https://github.com/Kasen87/api-wrapper#readme",
   "devDependencies": {
