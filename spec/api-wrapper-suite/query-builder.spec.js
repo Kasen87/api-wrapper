@@ -8,24 +8,6 @@ const QB = require('../../app/helpers/query-builder.js');
 
 describe('The QueryBuilder class', function(){
 
-  describe('has a constructor', function(){
-    beforeEach(function(){
-      var _qb = null;
-    });
-
-    it('and requires a glob of arguments', function(){
-      expect( function(){ _qb = new QB(); } ).toThrow();
-      expect( function(){ _qb = new QB("Josh"); }).not.toThrow();
-    });
-
-    it('and requires a valid urlBase param to be passed in', function(){
-
-    });
-
-    it('and requires a valid urlEndpoint param to be passed in', function(){
-
-    });
-  });
 
 });
 
