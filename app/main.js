@@ -3,6 +3,38 @@ class ApiWrapper {
   constructor(){
 
   }
+
+  getRanking(params){
+    if(!params) { throw new Error('Missing parameters'); }
+
+    let _retObj = {
+      "propensity": 0.0,
+      "ranking": "F"
+    };
+
+    if(!params.income || !params.zipcode || !params.age){
+      throw new Error('Not enough data to call api.');
+    }
+
+
+    return _retObj;
+  }
+
+  getBaseURL(){
+
+  }
+
+  setBaseURL(){
+
+  }
+
+  getEndpoint(){
+
+  }
+
+  setEndpoint(){
+
+  }
 }
 
 module.exports = ApiWrapper;
