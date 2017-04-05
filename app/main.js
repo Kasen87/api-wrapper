@@ -7,16 +7,14 @@ class ApiWrapper {
   getRanking(params){
     if(!params) { throw new Error('Missing parameters'); }
 
-    let _retObj = {
-      "propensity": 0.0,
-      "ranking": "F"
-    };
-
     if(!params.income || !params.zipcode || !params.age){
       throw new Error('Not enough data to call api.');
     }
 
-
+    let _retObj = {
+      "propensity": 0.0,
+      "ranking": "F"
+    };
     return _retObj;
   }
 
