@@ -39,7 +39,10 @@ describe('The APIWrapper class', function(){
   });
 });
 
-
+/**
+ * Testing: ApiWrapper.getRanking()
+ * /-Internally needs to process the request and more...
+ */
 describe("The getRanking method", function(){
   let _API;
   let _FullDataObj = {
@@ -72,5 +75,86 @@ describe("The getRanking method", function(){
     expect(typeof _res).toBe(typeof JSON);
     expect(_res.propensity).toBeDefined();
     expect(_res.ranking).toBeDefined();
+  });
+});
+
+describe("The getBaseURL method", function(){
+  let _API;
+
+  beforeEach(function(){
+    _API = new api_wrapper();
+  });
+
+  it("should return a non-empty string primitive", function(){
+    let _res = _API.getBaseURL();
+    expect(_res).toBeDefined();
+    expect(typeof _res).toBe(typeof String());
+    expect(_res).not.toBe("");
+    expect(_res).toBeTruthy();
+  });
+});
+
+describe("The getEndpoint method", function(){
+  let _API;
+
+  beforeEach(function(){
+    _API = new api_wrapper();
+  });
+
+  it("should return a non-empty string primitive", function(){
+    let _res = _API.getEndpoint();
+    expect(_res).toBeDefined();
+    expect(typeof _res).toBe(typeof String());
+    expect(_res).not.toBe("");
+    expect(_res).toBeTruthy();
+  });
+});
+
+describe("The setBaseURL method", function(){
+  let _API;
+  let _fullBaseURL = "https://todoist.com/";
+  let _invalidBaseURL = "jff.ginvindv";
+
+  beforeEach(function(){
+    _API = new api_wrapper();
+  });
+
+  it("should throw an error if no params passed in", function(){
+    expect( function(){ return _API.setBaseURL(); }).toThrow();
+  });
+
+  //This requires a url validating module -- input-validator.js
+  it("should throw an error if data is not valid url base", function(){
+    expect( function(){ return _API.setBaseURL(_invalidBaseURL); }).toThrow();
+  });
+
+  //This requires a url validating module -- input-validator.js
+  it("should not throw an error if data is valid url base", function(){
+    expect( function(){ return _API.setBaseURL(_fullBaseURL); }).not.toThrow();
+  });
+});
+
+
+describe("The setEndpoint method", function(){
+   let _API;
+   let _fullEndpoint = "API/v7/sync";
+   let _invalidEndpoint = "jff.ginvindv";
+
+  beforeEach(function(){
+    _API = new api_wrapper();
+  });
+
+  it("should throw an error if no params passed in", function(){
+    expect( function(){ return _API.setEndpoint(); }).toThrow();
+  });
+
+  //This requires a url validating module -- input-validator.js
+  it("should throw an error if data is not valid url base", function(){
+    expect( function(){ return _API.setEndpoint(_invalidEndpoint); }).toThrow();
+  });
+
+  //This requires a url validating module -- input-validator.js
+  it("should not throw an error if data is valid url base", function(){
+    expect( function(){ return _API.setEndpoint(_fullEndpoint); }).not.toThrow();
   });
 });

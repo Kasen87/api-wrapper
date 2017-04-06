@@ -19,7 +19,7 @@ class ApiWrapper {
   }
 
   getBaseURL(){
-
+    return "a url value";
   }
 
   setBaseURL(){

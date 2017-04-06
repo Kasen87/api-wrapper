@@ -46,3 +46,6 @@ _workspace-specific
 
 # JSHint configuration files
 .jshintrc
+
+# Token Config Files
+TestingAuths.json
