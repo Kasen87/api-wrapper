@@ -7,3 +7,6 @@ _ref-files/_workspace-specific
 *.sublime-workspace
 *.sublime-project
 ./example.json
+
+# Token Config Files
+TestingAuths.json

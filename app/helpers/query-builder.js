@@ -2,7 +2,10 @@
  * Class: QueryBuilder
  */
 class QueryBuilder{
-  constructor(){
+  constructor(params){
+    if(!params){
+      throw new Error("QueryBuilder is missing parameters.");
+    }
   }
 }
 
