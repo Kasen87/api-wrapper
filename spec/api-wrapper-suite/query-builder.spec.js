@@ -33,7 +33,6 @@ describe('newQueryString method', () => {
   });
 
   it('should accept params', () => {
-    expect(() => {return _qb.newQueryString();} ).not.toThrow();
     expect(() => {return _qb.newQueryString(_params); }).not.toThrow();
   });
 
