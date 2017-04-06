@@ -43,6 +43,6 @@ describe('The newRequest method', () => {
   it('should return a JSON object', () => {
     let _res = _rh.newRequest();
     expect(_res).toBeDefined();
-    expect(typeof _res).toBe(typeof JSON());
+    expect(typeof _res).toBe(typeof JSON);
   });
 });
