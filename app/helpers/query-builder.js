@@ -7,6 +7,10 @@ class QueryBuilder{
       throw new Error("QueryBuilder is missing parameters.");
     }
   }
+
+  newQueryString(){
+    return "truthy";
+  }
 }
 
 module.exports = QueryBuilder;
