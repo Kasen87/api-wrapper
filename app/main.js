@@ -4,22 +4,18 @@ class ApiWrapper {
 
   }
 
-  getRanking(params){
+  getData(params){
     if(!params) { throw new Error('Missing parameters'); }
 
-    if(!params.income || !params.zipcode || !params.age){
-      throw new Error('Not enough data to call api.');
+    if(!params.token || !params.sync_token || !params.resource_types){
+      throw new Error('Not enough data to make API call.');
     }
 
-    let _retObj = {
-      "propensity": 0.0,
-      "ranking": "F"
-    };
-    return _retObj;
+    return {};
   }
 
   getBaseURL(){
-    return "a url value";
+
   }
 
   setBaseURL(){
@@ -31,6 +27,14 @@ class ApiWrapper {
   }
 
   setEndpoint(){
+
+  }
+
+  getRequestMethod(){
+
+  }
+
+  setRequestMethod(){
 
   }
 }
