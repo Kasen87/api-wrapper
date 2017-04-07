@@ -6,40 +6,63 @@
  */
 
 //Using require index.js to bypass npm packing for ease
-describe('The API-Wrapper package', () => {
+describe('A developer using the API-Wrapper', () => {
   let API;
   let _api;
   let _data;
 
-  it('should not throw errors when requiring the index.js file', () => {
+  it('should not receive errors when requiring the library', () => {
     expect(() => {return require('../../index.js'); }).not.toThrow();
     API = require('../../index.js');
   });
 
-  it('should not throw errors on instantion of API-Wrapper class', () => {
+  it('should not receive errors when creating a new instance.', () => {
     expect(() => {return new API(); }).not.toThrow();
     _api = new API();
   });
 
-  it('should tell me that data is missing for a proper API call', () => {
-    expect(() => { return _api.getData(); })
-    .toThrow(Error("Parameters required to use getData method."));
+  describe('and calling the getData method', () => {
+    it('should be told that it expects parameters', () => {
+      expect(() => {
+        return _api.getData(_data);
+      }).toThrow(Error("Method getData: Expecting params but received none."));
+    });
 
     _data = "dataPiece";
-    expect(() => { return _api.getData(_data); })
-    .toThrow(Error("Expecting parameters as key:value object, not string"));
+    it('should be told it expects params as a key:value object', () => {
+      expect(() => {
+        return _api.getData(_data);
+      }).toThrow(Error("Method getData: Expecting params as key:value object."));
+    });
 
     _data = {"data":"piece"};
-    expect(() => {return _api.getData(_data); })
-      .toThrow(Error("Missing parameters: token, sync_token, and/or resource_types"));
+
+    it('should be told that something is missing in the params object', () => {
+      expect(() => {
+        return _api.getData(_data);
+      }).toThrow(Error("Method getData: Params object missing token, sync_token, or resource_types."));
+    });
+    _data = {
+      "token":"piece",
+      "sync_token":"this",
+      "resource_types":"everything",
+    };
+    it('should be told that resource_types is suppose to be an array', () => {
+      expect(() => {
+        return _api.getData(_data);
+      }).toThrow("Method getData: Expecting resource_types value as array.");
+    });
 
     _data = {
       "token":"piece",
       "sync_token":"this",
-      "resoure_types":"everything",
+      "resource_types":[],
     };
-    expect(() => {return _api.getData(_data); })
-      .toThrow(Error("Missing parameters: token, sync_token, and/or resource_types"));
+    it('should not receive a Method getData: error', () => {
+      expect(() => {
+        return _api.getData(_data);
+      }).not.toThrow("Method getData: Unexpected error.");
+    });
   });
 });
 
