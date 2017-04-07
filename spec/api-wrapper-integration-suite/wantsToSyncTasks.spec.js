@@ -23,9 +23,8 @@ describe('A developer using the API-Wrapper', () => {
 
   describe('and calling the getData method', () => {
     it('should be told that it expects parameters', () => {
-      expect(() => {
-        return _api.getData(_data);
-      }).toThrow(Error("Method getData: Expecting params but received none."));
+      expect(() => { return _api.getData(_data);})
+      .toThrow("Method getData: Expecting params but received none.");
     });
 
     _data = "dataPiece";
