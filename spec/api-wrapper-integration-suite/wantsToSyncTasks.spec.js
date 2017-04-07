@@ -9,7 +9,7 @@
 describe('The API-Wrapper package', () => {
   let _API;
   it('should not throw errors when requiring the index.js file', () => {
-    _API = require('./index.js');
+    expect(() => {return require('./index.js'); }).not.toThrow();
   });
 });
 
