@@ -13,7 +13,7 @@ describe('The ResponseValidator class', function(){
     _rv = new RV();
   });
 
-  it('should have a validateURL method', () => {
+  it('should have a validateResponse method', () => {
     expect(_rv.validateResponse).toBeDefined();
   });
 });
