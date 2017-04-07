@@ -9,7 +9,6 @@ class ApiWrapper {
     let _errPrefix = "Method getData";
 
     if(!_params) {
-      console.log("No params:", _params);
       throw new Error(`${_errPrefix}: Expecting params but received none.`);
     }
     if( !(_params instanceof Object) || _params.length <= 0 ) {

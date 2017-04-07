@@ -7,10 +7,7 @@
 
 //Using require index.js to bypass npm packing for ease
 describe('A developer using the API-Wrapper', () => {
-  let API;
-  let _api;
-  let _data;
-
+  let API, _api;
   it('should not receive errors when requiring the library', () => {
     expect(() => {return require('../../index.js'); }).not.toThrow();
     API = require('../../index.js');
@@ -20,48 +17,79 @@ describe('A developer using the API-Wrapper', () => {
     expect(() => {return new API(); }).not.toThrow();
     _api = new API();
   });
+});
 
-  describe('calls the getData method and', () => {
-    beforeEach(() => {
-      _data = null;
-    });
-
-    it('should be told that it expects parameters', () => {
-      expect(() => { return _api.getData(_data);})
-        .toThrow(Error("Method getData: Expecting params but received none."));
-
-      expect(() => { return _api.getData();})
-        .toThrow(Error("Method getData: Expecting params but received none."));
-    });
-
-    it('should be told it expects params as a key:value object', () => {
-      _data = "dataPiece";
-      expect(() => { return _api.getData(_data); })
-        .toThrow(Error("Method getData: Expecting params as key:value object."));
-    });
-
-
-    it('should be told that something is missing in the params object', () => {
-     _data = {"data":"piece"};
-      expect(() => { return _api.getData(_data); })
-        .toThrow(Error("Method getData: Params object missing token, sync_token, or resource_types."));
-    });
-
-    it('should be told that resource_types is suppose to be an array', () => {
-      _data = { "token":"piece", "sync_token":"this", "resource_types":"everything" };
-      expect(() => { return _api.getData(_data); })
-        .toThrow(Error("Method getData: Expecting resource_types value as array."));
-    });
-
-    it('should not receive a Method getData: error', () => {
-      _data = {"token":"piece", "sync_token":"this", "resource_types":[] };
-      expect(() => { return _api.getData(_data); })
-        .not.toThrow(Error("Method getData: Unexpected error."));
-    });
+describe('A developer calls the getData method', () => {
+  let API = require('../../index.js');
+  let _api = new API();
+  let _data;
+  beforeEach(() => {
+    _data = null;
   });
 
-  describe('gets a response from getData and', () => {
+  it('should be told that it expects parameters', () => {
+    expect(() => { return _api.getData(_data);})
+      .toThrow(Error("Method getData: Expecting params but received none."));
 
+    expect(() => { return _api.getData();})
+      .toThrow(Error("Method getData: Expecting params but received none."));
+  });
+
+  it('should be told it expects params as a key:value object', () => {
+    _data = "dataPiece";
+    expect(() => { return _api.getData(_data); })
+      .toThrow(Error("Method getData: Expecting params as key:value object."));
+  });
+
+
+  it('should be told that something is missing in the params object', () => {
+   _data = {"data":"piece"};
+    expect(() => { return _api.getData(_data); })
+      .toThrow(Error("Method getData: Params object missing token, sync_token, or resource_types."));
+  });
+
+  it('should be told that resource_types is suppose to be an array', () => {
+    _data = { "token":"piece", "sync_token":"this", "resource_types":"everything" };
+    expect(() => { return _api.getData(_data); })
+      .toThrow(Error("Method getData: Expecting resource_types value as array."));
+  });
+
+  it('should not receive a Method getData: error', () => {
+    _data = {"token":"piece", "sync_token":"this", "resource_types":[] };
+    expect(() => { return _api.getData(_data); })
+      .not.toThrow(Error("Method getData: Unexpected error."));
+  });
+});
+
+describe('The response from the getData method', () => {
+  let API = require('../../index.js');
+  let _api = new API();
+  let _data = {
+    "token":"piece",
+    "sync_token":"this",
+    "resource_types":[]
+  };
+
+  let _res;
+
+  beforeEach( (done) => {
+    _res = _api.getData(_data);
+    done();
+  });
+
+  it('starts as a promise object', () => {
+    let _res = _api.getData(_data);
+    expect(_res instanceof Promise).toEqual(true);
+  });
+
+  it('should contain a sync_token value', () => {
+    expect(_res.sync_token).not.toBeUndefined();
+    expect(_res.sync_token).toBeTruthy();
+  });
+
+  it('should not give any other error', (done) => {
+    expect(() => {return _api.getData(_data);}).not.toThrow();
+    done();
   });
 });
 

@@ -93,9 +93,16 @@ describe("The getData method", function(){
     expect( function(){ return _API.getData(); }).toThrow();
   });
 
-  it("should return a JSON object with values", function(){
+  it("should return a JSON object with values", function(done){
     let _res = _API.getData(_syncData);
     expect(_res).toBeDefined();
-    expect(typeof _res).toBe(typeof JSON);
+    expect(_res instanceof Object).toEqual(true);
+    expect(_res instanceof String).toEqual(false);
+    expect(_res instanceof Number).toEqual(false);
+    expect(_res instanceof Array).toEqual(false);
+    expect(_res instanceof Boolean).toEqual(false);
+    expect(_res instanceof Error).toEqual(false);
+    expect(Object.keys(_res).length).toBeGreaterThan(0);
+    done();
   });
 });
