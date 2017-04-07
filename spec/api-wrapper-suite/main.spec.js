@@ -78,7 +78,7 @@ describe("The getData method", function(){
   let _syncData = {
     "token": 'asdfienlo23845',
     "sync_token": '*',
-    "resource_types": '["all"]'
+    "resource_types": ["all"]
   };
 
   beforeEach(function(){
