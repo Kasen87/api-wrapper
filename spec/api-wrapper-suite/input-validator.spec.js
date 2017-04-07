@@ -13,8 +13,11 @@ describe('The InputValidator class', function(){
     _iv = new IV();
   });
 
-  it('should have a validateBaseURL method', () => {
-    expect(_iv.validateBaseURL).toBeDefined();
+  it('should have a validateURL method', () => {
+    expect(_iv.validateURL).toBeDefined();
   });
 
+  it('should have a validateInput method', () => {
+    expect(_iv.validateInput).toBeDefined();
+  });
 });
