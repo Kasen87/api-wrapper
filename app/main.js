@@ -22,7 +22,12 @@ class ApiWrapper {
       throw new Error(`${_errPrefix}: Expecting resource_types value as array.`);
     }
 
-    return {};
+    let _returnObj = new Promise((resolve, reject) => {
+      let _tempBool = true;
+      if (!_tempBool) { return reject({"status": "requestFailed"}); };
+      return resolve({"sync_token": "1"});
+    });
+    return _returnObj;
   }
 
   getBaseURL(){
