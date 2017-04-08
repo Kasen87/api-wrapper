@@ -5,7 +5,6 @@ const RV = require('../../app/helpers/response-validator.js');
  * @param  {}
  * @return {}
  */
-
 describe('The ResponseValidator class', function(){
   let _rv;
 

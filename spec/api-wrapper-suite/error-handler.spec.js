@@ -7,6 +7,7 @@ const EH = require('../../app/helpers/error-handler.js');
  */
 
 describe('The ErrorHandler class', function(){
-
-
+  it('does not need parameters during instantiation', () => {
+    expect( () => { return new EH(); }).not.toThrow();
+  });
 });
