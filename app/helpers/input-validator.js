@@ -2,16 +2,25 @@
  * Class: InputValidator
  */
 class InputValidator{
-  constructor(){
-
+  constructor(pathToCriteria){
+    if (!pathToCriteria) { throw new Error("No pathToCriteria."); }
   }
 
   validateURL(){
 
   }
 
-  validateInput(){
+  validateInput(testParams) {
     //way too generic of a method - possibly redundant?
+    if(!testParams) {
+      throw new Error("Nothing to test.");
+    }
+
+    if (testParams != "Invalid text!") {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

@@ -13,11 +13,11 @@ class RequestHandler {
           let contentType = response.headers['content-type'];
 
           let error;
-          if(statusCode < 200 || statusCode >= 300 ) { 
-            error = new Error(`Failed Request: ${statusCode}`); 
+          if(statusCode < 200 || statusCode >= 300 ) {
+            error = new Error(`Failed Request: ${statusCode}`);
           }
           else if (!/^application\/json/.test(contentType)) {
-            error = new Error(`Invalid content-type.\n` + 
+            error = new Error(`Invalid content-type.\n` +
               `Unexpected ${contentType}`);
           }
 

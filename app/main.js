@@ -7,13 +7,17 @@ class ApiWrapper {
 
   getData(parameters){
     let _params = parameters;
-    let _IV = new InputValidator();
+    let _errPrefix = "Method getData";
+    if (!_params) {
+      throw new Error(`${_errPrefix}: Expecting params but received none.`);
+    }
 
+    let _IV = new InputValidator('../../testData.json');
+    /**
+     * This is not working right now - need to flush out the validateInput method
+     * and move it all to the inputValidator class where it belongs
+     */
     if (!_IV.validateInput(_params) ) {
-      let _errPrefix = "Method getData";
-      if(!_params) {
-        throw new Error(`${_errPrefix}: Expecting params but received none.`);
-      }
       if( !(_params instanceof Object) || _params.length <= 0 ) {
         throw new Error(`${_errPrefix}: Expecting params as key:value object.`);
       }

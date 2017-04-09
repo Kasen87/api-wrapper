@@ -1,48 +1,56 @@
-const RH = require('../../app/helpers/request-handler.js');
 /**
- * Test Suite for: request-handler.js
- * @param  {}
- * @return {}
- */
-
-describe('The RequestHandler class', function(){
-  let _rh;
-  let _params;
-
-  beforeEach(()=>{
-    _params = {'token': 'asoine'};
-    _rh = new RH(_params);
-  });
-
-  it('should require params', ()=> {
-    expect(()=> {return new RH(); }).toThrow();
-  });
-
-  it('should require token', () => {
-    let _params = {'mine': 'woeicnwein'};
-    expect(() => {return new RH(_params); }).toThrow();
-
-    _params = {'token': 'asd;foiwnecli'};
-    expect(() => {return new RH(_params); }).not.toThrow();
-  });
-
-  it('should have a newRequest method', () => {
-    expect(_rh.newRequest).toBeDefined();
+* File: spec/api-wrapper-suite/request-handler.spec.js
+* Name: RequestHandler Suite
+* Testing: request-handler.js
+* Notes:
+*/
+const RH = require('../../app/helpers/request-handler.js');
+const fs = require('fs');
+const rawData = new Promise( (resolve, reject) => {
+  fs.readFile('testData.json', 'utf8', (err, data) => {
+    if (err) {
+      reject(err);
+      return;
+    }
+    try {
+      let _parsedData = JSON.parse(data);
+      resolve(_parsedData);
+    } catch(e) {
+      reject(e);
+      console.log(e.message);
+    }
   });
 });
 
-describe('The newRequest method', () => {
-  let _rh;
-  let _params;
-
-  beforeEach(()=>{
-    _params = {'token': 'asoine'};
-    _rh = new RH(_params);
+describe('The RequestHandler class', () => {
+  let _data;
+  beforeEach( (done) => {
+    rawData.then( function(response){
+      _data = response;
+      done();
+    }, (reason) => {
+      console.log(reason);
+      done();
+    });
   });
 
-  it('should return a JSON object', () => {
-    let _res = _rh.newRequest();
-    expect(_res).toBeDefined();
-    expect(typeof _res).toBe(typeof JSON);
+  it('requires a base url to be instantiated', () => {
+    expect( () => { return new RH(); }).toThrow();
+    expect( () => { return new RH(_data.todoist.baseURL); }).not.toThrow();
+  });
+
+  describe('has a newRequest method', () => {
+    let _rh;
+    beforeEach( () => {
+      _rh = new RH(_data.todoist.baseURL);
+    });
+
+    it('is defined and accessible', () => {
+      expect(_rh.newRequest).toBeDefined();
+    });
   });
 });
+
+
+
+

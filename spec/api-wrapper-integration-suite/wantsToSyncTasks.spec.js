@@ -88,7 +88,7 @@ describe('The response from the getData method', () => {
     });
   });
 
-  xit('should not give any other error', (done) => {
+  it('should not give any other error', (done) => {
     expect(() => {return _api.getData(_data);}).not.toThrow();
     done();
   });
