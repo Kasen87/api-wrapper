@@ -7,7 +7,7 @@
 const RH = require('../../app/helpers/request-handler.js');
 const fs = require('fs');
 const rawData = new Promise( (resolve, reject) => {
-  fs.readFile('testData.json', 'utf8', (err, data) => {
+  fs.readFile('_test-sync-data/testData.json', 'utf8', (err, data) => {
     if (err) {
       reject(err);
       return;
@@ -41,32 +41,40 @@ describe('The RequestHandler class', () => {
 
   describe('has a newRequest method that', () => {
     let _rh;
-    beforeEach( () => {
+    let _token;
+    beforeEach( (done) => {
+      rawData.then( function(response){
+        _data = response;
+        done();
+      }, (reason) => {
+        console.log(reason);
+        done();
+      });
+      _token = _data.todoist.user_token;
       _rh = new RH(_data.todoist.baseURL);
+
     });
 
     it('is defined and accessible', () => {
       expect(_rh.newRequest).toBeDefined();
     });
 
-    it('accepts an optional object argument only as a key:value pair', () => {
-      expect(() => { return _rh.newRequest(); }).not.toThrow();
-      expect(() => {
-        return _rh.newRequest({"endpoint":_data.todoist.endpoint}); })
-      .not.toThrow();
-      expect(() => { return _rh.newRequest(_data.todoist.endpoint); }).toThrow();
+    it('requires an auth token string to be passed in', () => {
+      expect(() => { return _rh.newRequest(); }).toThrow();
+      expect(() => { return _rh.newRequest(_token); }).not.toThrow();
     });
 
     it('returns a promise object', () => {
-      let _res = _rh.newRequest();
+      let _res = _rh.newRequest(_token);
       expect(_res).toEqual(jasmine.any(Promise));
     });
 
     it('should resolve to JSON data', (done) => {
-      let _res = _rh.newRequest();
+      let _res = _rh.newRequest(_token);
       _res.then(function(response){
-        console.log("Response is: ", response);
-        console.log("Sync-Token", response.sync_token);
+        expect(response).toBeDefined();
+        expect(response.sync_token).toBeDefined();
+        expect((response instanceof Object)).toBe(true);
         done();
       }, (reason) => {
         console.log("Rejected for:", reason);

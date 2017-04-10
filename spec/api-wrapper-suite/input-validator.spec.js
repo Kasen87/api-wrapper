@@ -1,5 +1,5 @@
 const IV = require('../../app/helpers/input-validator.js');
-const TEST_INPUT = '../../testData.json';
+const TEST_INPUT = '../../_test-sync-data/testData.json';
 /**
  * Test Suite for: input-validator.js
  * @param  {}

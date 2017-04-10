@@ -10,9 +10,10 @@ class RequestHandler{
     this._baseURL = baseURL;
   }
 
-  newRequest(params){
+  newRequest(userToken){
+    if(!userToken){ throw new TypeError(); }
     let _userObj = {
-      token: '2a19a840402eeaeea393ccd0cd2fca7cc5dd5493',
+      token: userToken,
       sync_token: '*',
       resource_types: '["projects"]'
     };
@@ -24,7 +25,8 @@ class RequestHandler{
       json: true
     };
 
-    return rp_native(options);
+    let _promiseObject = rp_native(options).promise();
+    return _promiseObject;
   }
 }
 
