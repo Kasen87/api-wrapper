@@ -39,7 +39,7 @@ describe('The RequestHandler class', () => {
     expect( () => { return new RH(_data.todoist.baseURL); }).not.toThrow();
   });
 
-  describe('has a newRequest method', () => {
+  describe('has a newRequest method that', () => {
     let _rh;
     beforeEach( () => {
       _rh = new RH(_data.todoist.baseURL);
@@ -47,6 +47,19 @@ describe('The RequestHandler class', () => {
 
     it('is defined and accessible', () => {
       expect(_rh.newRequest).toBeDefined();
+    });
+
+    it('accepts an optional object argument only as a key:value pair', () => {
+      expect(() => { return _rh.newRequest(); }).not.toThrow();
+      expect(() => {
+        return _rh.newRequest({"endpoint":_data.todoist.endpoint}); })
+      .not.toThrow();
+      expect(() => { return _rh.newRequest(_data.todoist.endpoint); }).toThrow();
+    });
+
+    it('returns a promise object', () => {
+      let _res = _rh.newRequest();
+      expect(_res).toEqual(jasmine.any(Promise));
     });
   });
 });
