@@ -61,6 +61,18 @@ describe('The RequestHandler class', () => {
       let _res = _rh.newRequest();
       expect(_res).toEqual(jasmine.any(Promise));
     });
+
+    it('should resolve to JSON data', (done) => {
+      let _res = _rh.newRequest();
+      _res.then(function(response){
+        console.log("Response is: ", response);
+        console.log("Sync-Token", response.sync_token);
+        done();
+      }, (reason) => {
+        console.log("Rejected for:", reason);
+        done();
+      });
+    });
   });
 });
 

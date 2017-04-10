@@ -48,5 +48,4 @@ _workspace-specific
 .jshintrc
 
 # Token Config Files
-TestingAuths.jsontest
-testData.json
+_test-sync-data
