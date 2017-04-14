@@ -3,11 +3,7 @@
  */
 const request = require('request');
 const rp_native = require('request-promise-native');
-const nock = require('nock');
-const fs = require('fs');
-const todoistFile = process.cwd() + '_test-sync-data/initialSyncResponse.json';
-
-
+const testEnv = require(process.cwd()+'/app/helpers/setupNock.js');
 
 function setupNockResponse(){
   let _file = new Promise( (res, rej) => {
@@ -45,7 +41,7 @@ class RequestHandler{
     if(!props) throw new TypeError();
     this._props = props;
 
-    if (isTest) { setupNockResponse(); }
+    if (isTest) { testEnv(); }
   }
 
   newRequest(userToken){

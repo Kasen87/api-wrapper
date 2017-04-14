@@ -44,26 +44,26 @@ describe('The APIWrapper class', function(){
       expect(_API.getData).toBeDefined();
     });
 
-    it('should have a getBaseURL method', function(){
+    xit('should have a getBaseURL method', function(){
       expect(_API.getBaseURL).toBeDefined();
     });
 
-    it('should have a setBaseURL method', function(){
+    xit('should have a setBaseURL method', function(){
       expect(_API.setBaseURL).toBeDefined();
     });
 
-    it('should have a getEndpoint method', function(){
+    xit('should have a getEndpoint method', function(){
       expect(_API.getEndpoint).toBeDefined();
     });
-    it('should have a setEndpoint method', function(){
+    xit('should have a setEndpoint method', function(){
       expect(_API.setEndpoint).toBeDefined();
     });
 
-    it('should have a getRequestMethod method', function(){
+    xit('should have a getRequestMethod method', function(){
       expect(_API.getRequestMethod).toBeDefined();
     });
 
-    it('should have a setRequestMethod method', function(){
+    xit('should have a setRequestMethod method', function(){
       expect(_API.setRequestMethod).toBeDefined();
     });
   });
